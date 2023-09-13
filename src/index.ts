@@ -1,13 +1,11 @@
 import { Response, Request } from 'express'
 
-var cors = require('cors')
+const userRouter = require('./routes/user')
 var bodyParser = require('body-parser')
-
 const express = require('express')
+var cors = require('cors')
 const app = express()
 const PORT = 8000
-
-const userRouter = require('./routes/user')
 
 let corsOptions = {
     origin: 'http://localhost:3000',
