@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
 
-const URI = 'mongodb://localhost:27017/backendteste'
+const URl = process.env.MONGO_HOST
 
 const connectToDatabase = async () => {
     try {
-        await mongoose.connect(URI, {
+        await mongoose.connect(URl, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
