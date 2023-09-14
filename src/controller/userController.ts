@@ -1,4 +1,5 @@
 import { Response, Request } from 'express'
+const userSchemaRequest = require('../models/reqSchema')
 const { listUser, createUser, deleteUser, updateUser, listAUser } = require('../services/user')
 
 async function getAll(req: Request, res: Response) {
@@ -12,7 +13,8 @@ async function getAll(req: Request, res: Response) {
 
 async function createOne(req: Request, res: Response) {
     try {
-        const user = await createUser(req.body)
+        const validBody = userSchemaRequest.parse(req.body)
+        const user = await createUser(validBody)
         res.status(201).send(user)
     } catch (error) {
         res.status(400).send(error)
@@ -30,7 +32,8 @@ async function getOne(req: Request, res: Response) {
 
 async function updateOne(req: Request, res: Response) {
     try {
-        await updateUser(req.params.id, req.body)
+        const validBody = userSchemaRequest.parse(req.body)
+        await updateUser(req.params.id, validBody)
         res.status(204).send()
     } catch (error) {
         res.status(400).send(error)
