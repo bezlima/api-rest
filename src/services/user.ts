@@ -9,7 +9,7 @@ interface IUserData {
 
 exports.listUser = async () => {
     await databaseConnection()
-    const users = await user.find()
+    const users = await user.find().select('-password').select('-__v')
     return users
 }
 
@@ -21,16 +21,18 @@ exports.createUser = async (dataUser: IUserData) => {
 
 exports.listAUser = async (id: string) => {
     await databaseConnection()
-    const oneUser = await user.findById(id)
+    const oneUser = await user.findById(id).select('-password').select('-__v')
     return oneUser
 }
 
-exports.updateUser = async (id: string, newDataUser: IUserData) => {
+exports.updateUser = async (id: string, newDataUser: any) => {
     await databaseConnection()
     await user.findByIdAndUpdate(id, newDataUser)
+    return
 }
 
 exports.deleteUser = async (id: string) => {
     await databaseConnection()
     await user.findByIdAndDelete(id)
+    return
 }

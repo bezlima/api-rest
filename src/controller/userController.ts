@@ -29,13 +29,21 @@ async function getOne(req: Request, res: Response) {
 }
 
 async function updateOne(req: Request, res: Response) {
-    await updateUser(req.params.id, req.body)
-    res.status(204)
+    try {
+        await updateUser(req.params.id, req.body)
+        res.status(204).send()
+    } catch (error) {
+        res.status(400).send(error)
+    }
 }
 
 async function deleteOne(req: Request, res: Response) {
-    await deleteUser(req.params.id)
-    res.status(204)
+    try {
+        await deleteUser(req.params.id)
+        res.status(204).send()
+    } catch (error) {
+        res.status(400).send(error)
+    }
 }
 
 module.exports = { getAll, createOne, getOne, updateOne, deleteOne }
