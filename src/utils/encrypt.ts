@@ -1,31 +1,21 @@
 const bcrypt = require('bcrypt')
 
-////////////
-const password = 'senha123' // A senha que você deseja criptografar
-///////////////
-
-bcrypt.hash(password, 10, (err: Error | null, hash: string) => {
-    if (err) {
-        console.error(err)
-        return
+async function hashPassword(password: string) {
+    try {
+        const hash = await bcrypt.hash(password, 10)
+        return hash
+    } catch (error) {
+        throw error
     }
-    // 'hash' contém a senha criptografada
-    console.log('Senha criptografada:', hash)
-})
+}
 
-///////
-const storedHash = '...' // A senha criptografada armazenada no banco de dados
-const loginPassword = 'senha123' // A senha fornecida durante o processo de login
-////////////
+async function comparePassword(loginPassword: string, storedHash: string) {
+    try {
+        const result = await bcrypt.compare(loginPassword, storedHash)
+        return result
+    } catch (error) {
+        throw error
+    }
+}
 
-bcrypt.compare(loginPassword, storedHash, (err: Error | null, result: string) => {
-    if (err) {
-        console.error(err)
-        return
-    }
-    if (result) {
-        console.log('Senha correta. Acesso permitido.')
-    } else {
-        console.log('Senha incorreta. Acesso negado.')
-    }
-})
+module.exports = { hashPassword, comparePassword }

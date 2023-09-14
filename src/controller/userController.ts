@@ -1,6 +1,7 @@
 import { Response, Request } from 'express'
-const userSchemaRequest = require('../models/reqSchema')
+const { userSchemaRequest } = require('../models/reqSchema')
 const { listUser, createUser, deleteUser, updateUser, listAUser } = require('../services/user')
+const { hashPassword } = require('../utils/encrypt')
 
 async function getAll(req: Request, res: Response) {
     try {
@@ -14,6 +15,8 @@ async function getAll(req: Request, res: Response) {
 async function createOne(req: Request, res: Response) {
     try {
         const validBody = userSchemaRequest.parse(req.body)
+        const hashedPassword = await hashPassword(validBody.password)
+        validBody.password = hashedPassword
         const user = await createUser(validBody)
         res.status(201).send(user)
     } catch (error) {
