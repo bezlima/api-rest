@@ -33,3 +33,10 @@ Rode o projeto
 ```bash
 npm run dev
 ```
+
+## melhorias
+
+-   [ ] Divisão de rota de criação de usuários
+-   [ ] Adicionar rota de login
+-   [ ] Adicionar autenticação JWT
+-   [ ] Adicionar documentação de uso de rota
