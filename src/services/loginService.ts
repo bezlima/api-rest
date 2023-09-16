@@ -1,8 +1,13 @@
 const databaseConnection = require('../utils/dataBase')
 const user = require('../models/dataBaseSchema')
+import { comparePassword } from '../utils/encrypt'
 
-exports.listUser = async (email: string, password: string) => {
+const listUser = async (email: string, password: string) => {
     await databaseConnection()
-    const users = await user.findOne({ email })
-    return users
+    const loginUser = await user.findOne({ email })
+    const verifyPass = comparePassword(password, loginUser.password)
+    console.log(verifyPass)
+    return loginUser
 }
+
+module.exports = { listUser }
