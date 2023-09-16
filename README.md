@@ -16,7 +16,7 @@ Entre na pasta do projeto
 cd api-rest
 ```
 
-Instale as dependencias
+Instale as dependências
 
 ```bash
 npm install
