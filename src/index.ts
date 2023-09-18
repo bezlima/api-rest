@@ -2,6 +2,7 @@ import { Response, Request } from 'express'
 
 const userRouter = require('./routes/user')
 const LoginRouter = require('./routes/loginRoute')
+const SigninRouter = require('./routes/signinRoute')
 var bodyParser = require('body-parser')
 const express = require('express')
 var cors = require('cors')
@@ -18,6 +19,7 @@ app.use(bodyParser.json())
 app.use(cors(corsOptions))
 app.use(userRouter)
 app.use(LoginRouter)
+app.use(SigninRouter)
 
 app.get('/', (req: Request, res: Response) => {
     res.send(`

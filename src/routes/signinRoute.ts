@@ -1,7 +1,7 @@
 import express from 'express'
 const SigninRouter = express.Router()
-const userController = require('../controller/userController')
+const { createOne } = require('../controller/signinController')
 
-SigninRouter.route('/api/signin').post(userController.createOne)
+SigninRouter.route('/api/signin').post(createOne)
 
 module.exports = SigninRouter
