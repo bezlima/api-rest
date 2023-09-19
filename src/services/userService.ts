@@ -1,4 +1,4 @@
-const databaseConnection = require('../utils/dataBase')
+import { connectToDatabase } from '../utils/dataBase'
 const user = require('../models/dataBaseSchema')
 
 interface IUserData {
@@ -8,25 +8,25 @@ interface IUserData {
 }
 
 exports.listUser = async () => {
-    await databaseConnection()
+    await connectToDatabase()
     const users = await user.find().select('-password').select('-__v')
     return users
 }
 
 exports.listAUser = async (id: string) => {
-    await databaseConnection()
+    await connectToDatabase()
     const oneUser = await user.findById(id).select('-password').select('-__v')
     return oneUser
 }
 
 exports.updateUser = async (id: string, newDataUser: any) => {
-    await databaseConnection()
+    await connectToDatabase()
     await user.findByIdAndUpdate(id, newDataUser)
     return
 }
 
 exports.deleteUser = async (id: string) => {
-    await databaseConnection()
+    await connectToDatabase()
     await user.findByIdAndDelete(id)
     return
 }

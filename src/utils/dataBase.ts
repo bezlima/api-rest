@@ -3,7 +3,7 @@ require('dotenv').config()
 
 const URl = process.env.MONGO_HOST
 
-const connectToDatabase = async () => {
+export const connectToDatabase = async () => {
     try {
         await mongoose.connect(URl, {
             useNewUrlParser: true,
@@ -13,5 +13,3 @@ const connectToDatabase = async () => {
         console.error('Erro ao conectar ao banco de dados:', error)
     }
 }
-
-module.exports = connectToDatabase
