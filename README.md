@@ -36,7 +36,8 @@ npm run dev
 
 ## melhorias
 
--   [x] Divisão de rota de criação de usuários
--   [x] Adicionar rota de login
--   [ ] Adicionar autenticação JWT
--   [ ] Adicionar documentação de uso de rota
+-   [x] Divisão de rota de criação de usuários.
+-   [x] Adicionar rota de login.
+-   [ ] Padronizar importação e exportação.
+-   [ ] Adicionar autenticação JWT.
+-   [ ] Adicionar documentação de uso de rota.
