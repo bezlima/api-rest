@@ -1,6 +1,6 @@
 import { Response, Request } from 'express'
 const { userSchemaRequest } = require('../models/reqSchema')
-const { listUser, deleteUser, updateUser, listAUser } = require('../services/user')
+const { listUser, deleteUser, updateUser, listAUser } = require('../services/userService')
 
 async function getAll(req: Request, res: Response) {
     try {

@@ -1,6 +1,6 @@
 import { Response, Request } from 'express'
 const { userSchemaRequest } = require('../models/reqSchema')
-const { createUser } = require('../services/user')
+const { createUser } = require('../services/userService')
 const { hashPassword } = require('../utils/encrypt')
 
 async function createOne(req: Request, res: Response) {

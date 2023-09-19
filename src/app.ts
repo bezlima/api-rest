@@ -1,6 +1,6 @@
 import { Response, Request } from 'express'
 
-const userRouter = require('./routes/user')
+const userRouter = require('./routes/loginRoute')
 const LoginRouter = require('./routes/loginRoute')
 const SigninRouter = require('./routes/signinRoute')
 var bodyParser = require('body-parser')
