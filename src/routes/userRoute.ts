@@ -1,13 +1,9 @@
 import express from 'express'
-const userRouter = express.Router()
-const userController = require('../controller/userController')
+import { getAll, getOne, updateOne, deleteOne } from '../controller/userController'
+const UserRouter = express.Router()
 
-userRouter.route('/api/user').get(userController.getAll).post(userController.createOne)
+UserRouter.route('/api/user').get(getAll)
 
-userRouter
-    .route('/api/user/:id')
-    .get(userController.getOne)
-    .patch(userController.updateOne)
-    .delete(userController.deleteOne)
+UserRouter.route('/api/user/:id').get(getOne).patch(updateOne).delete(deleteOne)
 
-module.exports = userRouter
+export = UserRouter

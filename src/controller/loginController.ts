@@ -1,8 +1,8 @@
 import { Response, Request } from 'express'
-const { loginSchemaRequest } = require('../models/loginSchema')
-const { listUser } = require('../services/loginService')
+import { loginSchemaRequest } from '../models/loginSchema'
+import { listUser } from '../services/loginService'
 
-async function loginController(req: Request, res: Response) {
+export async function loginController(req: Request, res: Response) {
     try {
         const validRequest = loginSchemaRequest.parse(req.body)
         const login = await listUser(validRequest.email, validRequest.password)
@@ -11,5 +11,3 @@ async function loginController(req: Request, res: Response) {
         console.log(error)
     }
 }
-
-module.exports = { loginController }

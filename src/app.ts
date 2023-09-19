@@ -1,8 +1,8 @@
 import { Response, Request } from 'express'
+import LoginRouter from './routes/loginRoute'
+import SigninRouter from './routes/signinRoute'
+import UserRouter from './routes/userRoute'
 
-const userRouter = require('./routes/loginRoute')
-const LoginRouter = require('./routes/loginRoute')
-const SigninRouter = require('./routes/signinRoute')
 var bodyParser = require('body-parser')
 const express = require('express')
 var cors = require('cors')
@@ -17,7 +17,8 @@ let corsOptions = {
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(cors(corsOptions))
-app.use(userRouter)
+
+app.use(UserRouter)
 app.use(LoginRouter)
 app.use(SigninRouter)
 

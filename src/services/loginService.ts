@@ -1,12 +1,12 @@
-const databaseConnection = require('../utils/dataBase')
-const user = require('../models/dataBaseSchema')
 import { comparePassword } from '../utils/encrypt'
+import user from '../models/dataBaseSchema'
+import { connectToDatabase } from '../utils/dataBase'
 
-const listUser = async (email: string, password: string) => {
-    await databaseConnection()
+export const listUser = async (email: string, password: string) => {
+    await connectToDatabase()
     let login
     const loginUser = await user.findOne({ email })
-    if (loginUser) {
+    if (loginUser?.password) {
         await comparePassword(password, loginUser.password).then((res: boolean) => {
             return (login = res)
         })
@@ -15,5 +15,3 @@ const listUser = async (email: string, password: string) => {
     }
     return login
 }
-
-module.exports = { listUser }

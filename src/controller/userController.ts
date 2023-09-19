@@ -1,8 +1,8 @@
 import { Response, Request } from 'express'
-const { userSchemaRequest } = require('../models/reqSchema')
-const { listUser, deleteUser, updateUser, listAUser } = require('../services/userService')
+import { userSchemaRequest } from '../models/reqSchema'
+import { listUser, deleteUser, updateUser, listAUser } from '../services/userService'
 
-async function getAll(req: Request, res: Response) {
+export async function getAll(req: Request, res: Response) {
     try {
         const userList = await listUser()
         res.status(200).send(userList)
@@ -11,7 +11,7 @@ async function getAll(req: Request, res: Response) {
     }
 }
 
-async function getOne(req: Request, res: Response) {
+export async function getOne(req: Request, res: Response) {
     try {
         const user = await listAUser(req.params.id)
         res.status(200).send(user)
@@ -20,7 +20,7 @@ async function getOne(req: Request, res: Response) {
     }
 }
 
-async function updateOne(req: Request, res: Response) {
+export async function updateOne(req: Request, res: Response) {
     try {
         const validBody = userSchemaRequest.parse(req.body)
         await updateUser(req.params.id, validBody)
@@ -30,7 +30,7 @@ async function updateOne(req: Request, res: Response) {
     }
 }
 
-async function deleteOne(req: Request, res: Response) {
+export async function deleteOne(req: Request, res: Response) {
     try {
         await deleteUser(req.params.id)
         res.status(204).send()
@@ -38,5 +38,3 @@ async function deleteOne(req: Request, res: Response) {
         res.status(400).send(error)
     }
 }
-
-module.exports = { getAll, getOne, updateOne, deleteOne }

@@ -1,9 +1,9 @@
 import { Response, Request } from 'express'
-const { userSchemaRequest } = require('../models/reqSchema')
-const { createUser } = require('../services/userService')
-const { hashPassword } = require('../utils/encrypt')
+import { userSchemaRequest } from '../models/reqSchema'
+import { createUser } from '../services/signinService'
+import { hashPassword } from '../utils/encrypt'
 
-async function createOne(req: Request, res: Response) {
+export async function createOne(req: Request, res: Response) {
     try {
         const validBody = userSchemaRequest.parse(req.body)
         const hashedPassword = await hashPassword(validBody.password)
@@ -14,5 +14,3 @@ async function createOne(req: Request, res: Response) {
         res.status(400).send(error)
     }
 }
-
-module.exports = { createOne }

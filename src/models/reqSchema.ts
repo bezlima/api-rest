@@ -1,6 +1,6 @@
 const { z } = require('zod')
 
-exports.userSchemaRequest = z
+export const userSchemaRequest = z
     .object({
         email: z
             .string({

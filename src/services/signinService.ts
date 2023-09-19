@@ -1,5 +1,5 @@
 import { connectToDatabase } from '../utils/dataBase'
-const user = require('../models/dataBaseSchema')
+import user from '../models/dataBaseSchema'
 
 interface IUserData {
     userName: string
@@ -7,7 +7,7 @@ interface IUserData {
     password: string
 }
 
-exports.createUser = async (dataUser: IUserData) => {
+export const createUser = async (dataUser: IUserData) => {
     await connectToDatabase()
     const createUser = await user.create(dataUser)
     return createUser
