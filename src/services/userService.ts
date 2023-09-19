@@ -13,12 +13,6 @@ exports.listUser = async () => {
     return users
 }
 
-exports.createUser = async (dataUser: IUserData) => {
-    await databaseConnection()
-    const createUser = await user.create(dataUser)
-    return createUser
-}
-
 exports.listAUser = async (id: string) => {
     await databaseConnection()
     const oneUser = await user.findById(id).select('-password').select('-__v')
