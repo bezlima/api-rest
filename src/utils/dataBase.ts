@@ -9,8 +9,7 @@ export const connectToDatabase = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         } as ConnectOptions)
-    } catch (error) {
-        console.error('Erro ao conectar ao banco de dados:', error)
-        throw error
+    } catch (error: any) {
+        console.error('Erro ao conectar ao banco de dados:', error.message)
     }
 }
