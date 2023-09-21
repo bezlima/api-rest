@@ -7,7 +7,6 @@ var bodyParser = require('body-parser')
 const express = require('express')
 var cors = require('cors')
 const app = express()
-const PORT = 8000
 
 let corsOptions = {
     origin: 'http://localhost:3000',
@@ -34,6 +33,5 @@ app.get('/', (req: Request, res: Response) => {
         </html 
     `)
 })
-app.listen(PORT, () => {
-    console.log('app online http://localhost:8000/')
-})
+
+export = app
