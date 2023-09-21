@@ -1,7 +1,8 @@
 import app from './app'
+require('dotenv').config()
 
-const PORT = 8000
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
-    console.log('app online http://localhost:8000/')
+    console.log(`app online http://localhost:${PORT}/`)
 })
