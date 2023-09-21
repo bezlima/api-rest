@@ -4,13 +4,9 @@ import SigninRouter from './routes/signinRoute'
 import UserRouter from './routes/userRoute'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import { corsOptions } from './utils/corsOptions'
 
 const app = express()
-
-let corsOptions = {
-    origin: 'http://localhost:3000',
-    optionsSuccessStatus: 200,
-}
 
 app.use(express.json())
 app.use(bodyParser.json())
