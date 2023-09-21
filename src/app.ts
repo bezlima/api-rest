@@ -1,11 +1,10 @@
-import { Response, Request } from 'express'
+import express, { Response, Request } from 'express'
 import LoginRouter from './routes/loginRoute'
 import SigninRouter from './routes/signinRoute'
 import UserRouter from './routes/userRoute'
+import bodyParser from 'body-parser'
+import cors from 'cors'
 
-var bodyParser = require('body-parser')
-const express = require('express')
-var cors = require('cors')
 const app = express()
 
 let corsOptions = {
