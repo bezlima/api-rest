@@ -1,4 +1,4 @@
-import express, { Response, Request } from 'express'
+import express from 'express'
 import LoginRouter from './routes/loginRoute'
 import SigninRouter from './routes/signinRoute'
 import UserRouter from './routes/userRoute'
