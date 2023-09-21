@@ -18,17 +18,4 @@ app.use(LoginRouter)
 app.use(SigninRouter)
 app.use(homeRouter)
 
-// app.get('/', (req: Request, res: Response) => {
-//     res.send(`
-//         <html>
-//             <div style="display: flex; align-items: center">
-//                 <p style="margin-right: 5px"> api em: </p>
-//                 <a href="http://localhost:8000/api/user">
-//                     /api/user
-//                 </a>
-//             </div>
-//         </html
-//     `)
-// })
-
 export = app
